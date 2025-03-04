@@ -1,0 +1,31 @@
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+/public/build/  # Ignore les fichiers générés du frontend
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+/tests/  # Ignore le dossier de tests
+###< symfony/phpunit-bridge ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> Autres fichiers inutiles ###
+/node_modules/  # Si tu utilises NPM/Yarn
+/.idea/  # Fichiers de config PHPStorm
+/.vscode/  # Fichiers de config VS Code
+.DS_Store  # Fichiers système macOS
+/.cache/  # Cache temporaire
+/.symfony/cache/  # Cache de Symfony CLI
+/.symfony/log/  # Logs de Symfony CLI
+###< Autres fichiers inutiles ###
