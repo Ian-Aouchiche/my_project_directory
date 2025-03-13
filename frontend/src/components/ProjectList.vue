@@ -5,6 +5,7 @@
       <div v-if="projects.length === 0" class="alert alert-warning text-center">
         ⚠️ Aucun projet trouvé
       </div>
+      
   
       <!-- Formulaire d'ajout de projet -->
       <div class="card mb-4">
@@ -55,12 +56,17 @@
                 <strong>Date de début :</strong> {{ formatDate(project.dateDebut) }}<br>
                 <strong>Date de fin :</strong> {{ formatDate(project.dateFin) }}
               </p>
+              <router-link :to="{ name: 'project-details', params: { id: project.id } }" class="btn btn-info">
+              👀 Voir plus
+            </router-link>
               <button @click="deleteProject(project.id)" class="btn btn-danger w-100">❌ Supprimer</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    
   </template>
   
   <script>

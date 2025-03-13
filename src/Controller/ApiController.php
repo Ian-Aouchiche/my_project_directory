@@ -86,5 +86,26 @@ class ApiController extends AbstractController
             return $this->json(['error' => 'Erreur lors de la suppression du projet', 'details' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    #[Route('/projects/{id}', name: 'update_project', methods: ['PUT'])]
+public function updateProject(int $id, Request $request, ProjectRepository $projectRepository, EntityManagerInterface $entityManager): JsonResponse
+{
+    $project = $projectRepository->find($id);
+
+    if (!$project) {
+        return $this->json(['error' => 'Projet non trouvé'], Response::HTTP_NOT_FOUND);
+    }
+
+    $data = json_decode($request->getContent(), true);
+
+    if (isset($data['nom'])) $project->setNom($data['nom']);
+    if (isset($data['description'])) $project->setDescription($data['description']);
+    if (isset($data['statut'])) $project->setStatut($data['statut']);
+
+    $entityManager->flush();
+
+    return $this->json(['message' => 'Projet mis à jour avec succès'], Response::HTTP_OK);
+}
+
     
 }

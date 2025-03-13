@@ -1,13 +1,16 @@
 <template>
-  <ProjectList />
+  <div>
+    <NavBar />
+    <router-view />  <!-- Vue Router affichera la bonne page ici -->
+  </div>
 </template>
 
 <script>
-import ProjectList from './components/ProjectList.vue';
+import NavBar from './components/NavBar.vue';
 
 export default {
   components: {
-    ProjectList
+    NavBar
   }
 };
 </script>
