@@ -25,10 +25,10 @@ class Material
     #[ORM\Column(length: 255)]
     private ?string $emplacement = null;
 
-    #[ORM\ManyToOne(inversedBy: 'materials')]
-    #[ORM\JoinColumn(nullable: false)]
+    // Relation ManyToOne vers Project
+    #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'materials')]
+    #[ORM\JoinColumn(name: "project_id", referencedColumnName: "id", onDelete: "CASCADE")]
     private ?Project $project = null;
-
     public function getId(): ?int
     {
         return $this->id;
